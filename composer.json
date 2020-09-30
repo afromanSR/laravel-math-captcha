@@ -1,12 +1,35 @@
 {
-    "name": "afromansr/laravel-math-capture",
+    "name": "afromansr/laravel-math-captcha",
     "description": "A laravel framework math-captcha package",
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "Samson Rwakabuguli",
             "email": "srwakabuguli@gmail.com"
         }
     ],
-    "require": {}
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=5.6"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "AfromanSR\\LaravelMathCaptcha\\": "src/"
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.2"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AfromanSR\\LaravelMathCaptcha\\ServiceProvider"
+            ]
+        }
+    }
 }
