@@ -1,0 +1,12 @@
+{
+    "name": "afromansr/laravel-math-capture",
+    "description": "A laravel framework math-captcha package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Samson Rwakabuguli",
+            "email": "srwakabuguli@gmail.com"
+        }
+    ],
+    "require": {}
+}
