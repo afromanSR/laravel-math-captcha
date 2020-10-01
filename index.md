@@ -1,5 +1,5 @@
 # Laravel Math Captcha
-A simple math-captcha based on [Laravel Simple Captcha](https://laravelarticle.com/laravel-simple-captcha)
+A simple math-captcha based on [Laravel Simple Captcha](https://laravelarticle.com/laravel-simple-captcha)  
 Captcha is the most used technique for preventing spam in form submission. The Laravel Math Captcha package will help you to prevent spam form submission. It's a really simple and lightweight Laravel package for captcha.
 
 ### Features of Laravel Math Captcha
@@ -15,7 +15,7 @@ Captcha is the most used technique for preventing spam in form submission. The L
 Use [Composer] to install the package:
 
 ```
-$ composer require afromanSR/laravel-math-captcha
+$ composer require afromansr/laravel-math-captcha
 ```
 
 ### Usage
