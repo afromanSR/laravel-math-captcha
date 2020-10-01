@@ -15,7 +15,7 @@ Captcha is the most used technique for preventing spam in form submission. The L
 Use [Composer] to install the package:
 
 ```
-$ composer require afromanSR/laravel-math-captcha
+$ composer require afromansr/laravel-math-captcha
 ```
 
 ### Usage
