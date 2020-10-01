@@ -1,37 +1,87 @@
-## Welcome to GitHub Pages
+# Laravel Math Captcha
+A simple math-captcha based on [Laravel Simple Captcha](https://laravelarticle.com/laravel-simple-captcha)
+Captcha is the most used technique for preventing spam in form submission. The Laravel Math Captcha package will help you to prevent spam form submission. It's a really simple and lightweight Laravel package for captcha.
 
-You can use the [editor on GitHub](https://github.com/afromanSR/laravel-math-captcha/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### Features of Laravel Math Captcha
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+- Lightweight
+- Simple & easy to use
+- Support Laravel 5, 6
+- Captcha validation rules
+- Customizable math operation
 
-### Markdown
+#### Installation
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Use [Composer] to install the package:
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+$ composer require afromanSR/laravel-math-captcha
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Usage
 
-### Jekyll Themes
+Use the `getCaptchaBox` method, In the form where you need to add captcha.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/afromanSR/laravel-math-captcha/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+```blade
+{!!getCaptchaBox()!!}
+```
 
-### Support or Contact
+Optional: You can change the captcha answer input box name. By default, it is `_answer`
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```blade
+{!!getCaptchaBox('txtAnswer')!!}
+```
+Example
+
+```blade
+<form action="#" method="POST">
+    @csrf
+    
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="text" class="form-control">
+    </div>
+    
+    <div class="form-group">
+    {!!getCaptchaBox()!!}
+    </div>
+
+    <button class="btn btn-sm btn-default">Submit</button>
+</form>
+```
+
+**Custom Captcha Box**
+
+For adjusting the captcha box in your markup, you can make the captcha box using the `getCaptchaQuestion` method.
+
+```blade
+<p>Captcha</p>
+<p>{{getCaptchaQuestion()}}</p>
+<input name="_answer" type="number">
+```
+
+**Custom Captcha Math Operation**
+
+By default, captcha will auto generate math questions with random math operators from addition, subtraction or multiplication.
+To customise this setting, you need to publish the config file.
+
+```
+$ php artisan vendor:publish --tag=captcha-config
+```
+
+### Validation
+
+Use `math_captcha` validation rules where you handle the request.
+
+```php
+public function handleForm(Request $request)
+{
+     $this->validate( $request, [
+         '_answer'=>'required|simple_captcha'
+     ]);
+}
+```
